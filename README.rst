@@ -23,7 +23,7 @@ Installation
 
 .. Code:: bash
 
-  $ boilr template download nullne/golang-project-template golang-project
+  $ boilr template download nullne/golang-project-boiler-template golang-project
   
 Updates
 -------
@@ -32,7 +32,7 @@ I update these templates regularly. If you need to fetch the newer version, try 
 
 .. Code:: bash
 
-  $ boilr template download nullne/golang-project-template golang-project -f 
+  $ boilr template download nullne/golang-project-boiler-template golang-project -f 
 
 Usage
 -----
