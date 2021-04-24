@@ -1,0 +1,43 @@
+version: '3.3'
+services: 
+    console-backend:
+        build: 
+            context: .
+            dockerfile: ./Dockerfile-dev
+        container_name: {{ServiceName}}_backend
+        command: >
+            bash -c "scripts/wait-for-it.sh db:3306 -- air"
+        depends_on: 
+            - db
+        working_dir: /{{ServiceName}}
+        volumes: 
+            - .:/{{ServiceName}}
+        restart: always
+        environment:
+            CONSOLE_CLOUD_SEA_COM_CONFIG_PATH: /{{ServiceName}}/config/local/config.yaml
+        ports:
+            - "8001:8001"
+            - "8002:8002" # debug 
+        networks:
+            - {{ServiceName}}
+    db:
+        image: mysql:8.0
+        container_name: {{ServiceName}}_db
+        command: --default-authentication-plugin=mysql_native_password
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: MYSQL_ROOT_PASSWORD
+            MYSQL_DATABASE: {{ServiceName}}_db
+            MYSQL_USER: {{ServiceName}}_user
+            MYSQL_PASSWORD: 123456
+        volumes: 
+            - local-{{ServiceName}}-db:/var/lib/mysql
+        ports: 
+            - 3306:3306 # mysql db
+        networks:
+            - {{ServiceName}}
+volumes: 
+    local-console-db:
+
+networks:
+    {{ServiceName}}:

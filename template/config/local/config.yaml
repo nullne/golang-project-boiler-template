@@ -1,0 +1,13 @@
+listen_addr: '0.0.0.0:8001'
+debug_listen_addr: '0.0.0.0:8002'
+debug: true
+swagger:
+    host: "localhost:8001"
+databases:
+    core:
+        database: 'console_db'
+        user: 'console_user'
+        password: '123456'
+        port: '3306'
+        masters: ['127.0.0.1']
+        slaves: ['127.0.0.1']

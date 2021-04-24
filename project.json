@@ -1,0 +1,5 @@
+{
+  "ServiceName": "booking",
+  "GoModule": "github.com/nullne/demo",
+  "GoVersion": "1.15"
+}

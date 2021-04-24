@@ -1,0 +1,3 @@
+module {{GoModule}}
+
+go {{GoVersion}} 
